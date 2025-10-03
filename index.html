@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sam Mwangi Portfolio</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    html {scroll-behavior:smooth;}
+    body {
+      font-family:'Varela Round',sans-serif;
+      background:radial-gradient(circle at top left,#1e1e2f,#111);
+      color:#fff; overflow-x:hidden;
+    }
+    header {
+      position:fixed; top:0; width:100%; z-index:1000;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1rem 2rem;
+      background:rgba(20,20,40,0.7);
+      backdrop-filter:blur(8px);
+      box-shadow:0 0 15px rgba(255,77,90,0.2);
+    }
+    .logo {
+      font-size:1.6rem; font-weight:bold;
+      background:linear-gradient(90deg,#ff4d5a,#ff9f43);
+      background-clip:text;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    nav a {
+      margin:0 1rem; position:relative; font-weight:bold;
+    }
+    nav a::after {
+      content:""; position:absolute; bottom:-5px; left:0;
+      width:0; height:2px; background:#ff4d5a; transition:0.3s;
+    }
+    nav a:hover::after {width:100%;}
+    .social-icons a {margin-left:1rem; transition:color 0.3s;}
+    .social-icons a:hover {color:#ff9f43;}
+
+    section {padding:6rem 1rem; max-width:1000px; margin:auto;}
+
+    /* HERO */
+    .hero {
+      min-height:100vh; display:flex; flex-direction:column;
+      justify-content:center; align-items:center; text-align:center;
+      padding-top:7rem; position:relative;
+    }
+    .hero::before {
+      content:""; position:absolute; width:300px; height:300px;
+      background:radial-gradient(circle,#ff4d5a33,#0000);
+      top:20%; left:10%; border-radius:50%;
+      animation:float 8s ease-in-out infinite alternate;
+    }
+    .hero::after {
+      content:""; position:absolute; width:250px; height:250px;
+      background:radial-gradient(circle,#ff9f4333,#0000);
+      bottom:15%; right:10%; border-radius:50%;
+      animation:float 6s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes float {
+      0%{transform:translateY(0);}
+      100%{transform:translateY(-20px);}
+    }
+    .hero h1 {
+      font-size:3rem; margin-bottom:1rem;
+      text-shadow:0 0 10px #ff4d5a44;
+    }
+    .gradient-text {
+      background:linear-gradient(90deg,#ff4d5a,#ff9f43);
+      background-clip:text;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .tags {
+      display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-bottom:1rem;
+    }
+    .tag {
+      padding:0.4rem 0.8rem; border-radius:20px;
+      font-weight:bold; font-size:0.9rem;
+      box-shadow:0 0 8px #ff4d5a66;
+    }
+    .red {background:#ff4d5a;}
+    .blue {background:#3498db;}
+    .dark {background:#444;}
+    .tagline {max-width:600px; font-size:1.1rem; margin-bottom:1.5rem;}
+    .hero-buttons a {
+      display:inline-block; margin:0.5rem; padding:0.7rem 1.5rem;
+      border-radius:25px; font-weight:bold;
+      background:#ff4d5a; color:#fff;
+      box-shadow:0 0 10px #ff4d5a88; transition:all 0.3s;
+    }
+    .hero-buttons a:hover {
+      background:#ff9f43; box-shadow:0 0 20px #ff9f4388;
+    }
+
+    /* ABOUT */
+    #about {
+  background: 
+    linear-gradient(rgba(30,30,47,0.7), rgba(17,17,17,0.8)), 
+    url('REGALIA LUXE.png') center/cover no-repeat;
+  color: #fff;               /* Keeps text readable */
+  padding: 6rem 1rem;
+  max-width: 100%;           /* Allow full width background */
+  margin: 0;
+  border-radius: 0;          /* Optional: square edges */
+}
+
+#about p {
+  background: rgba(0,0,0,0.4);  /* Optional semi-transparent box for text */
+  padding: 1rem;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+    #about h2, #portfolio h2, #contact h2 {
+      font-size:2.2rem; margin-bottom:1rem;
+      text-align:center;
+      text-shadow:0 0 10px #ff9f4344;
+    }
+    #about p {
+      font-size:1.1rem; line-height:1.8; text-align:center;
+      max-width:800px; margin:auto;
+    }
+
+    /* PORTFOLIO */
+    .portfolio-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1.5rem; margin-top:2rem;
+    }
+    .portfolio-item {
+      background:#222; border-radius:15px; overflow:hidden;
+      transition:transform 0.3s, box-shadow 0.3s;
+      box-shadow:0 0 10px #ff4d5a44;
+    }
+    .portfolio-item:hover {
+      transform:translateY(-10px);
+      box-shadow:0 0 20px #ff9f4388;
+    }
+    .portfolio-item img {width:100%; display:block;}
+    .portfolio-item h3 {padding:1rem; color:#ff9f43;}
+
+    /* CONTACT */
+    form {
+      display:flex; flex-direction:column; gap:1rem;
+      max-width:500px; margin:2rem auto 0;
+    }
+    input, textarea {
+      padding:0.8rem; border:none; border-radius:8px;
+      font-size:1rem; background:#2a2a3d; color:#fff;
+      box-shadow:inset 0 0 5px #ff4d5a55;
+    }
+    button {
+      padding:0.8rem; border:none; border-radius:25px;
+      font-weight:bold; background:#ff4d5a; color:#fff;
+      cursor:pointer; transition:all 0.3s;
+      box-shadow:0 0 10px #ff4d5a88;
+    }
+    button:hover {
+      background:#ff9f43; box-shadow:0 0 20px #ff9f4388;
+    }
+
+    footer {
+      text-align:center; padding:2rem; background:#1e1e2f;
+      box-shadow:0 -2px 10px #ff4d5a22;
+    }
+    footer a {color:#ff4d5a;}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">SM</div>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="social-icons">
+    <a href="https://www.github.com/sam-codemwas" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/samuel-mwangi-214464259" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:samuelwaiyaki12@gmail.com"><i class="fas fa-envelope"></i></a>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <h1><span class="gradient-text">Samuel <br> Mwangi</h1></span>
+  <div class="tags">
+    <span class="tag red">Cybersecurity Analyst</span>
+    <span class="tag blue">Canva Designer</span>
+    <span class="tag dark">UI/UX Enthusiast</span>
+  </div>
+  <p class="tagline">
+    "Blending neo-futurism, playful design culture, and Canva-inspired artistry to design the future."
+  </p>
+  <div class="hero-buttons">
+    <a href="#portfolio">Explore My Work</a>
+    </div>
+    <div class="hero-buttons">
+      <a href="">Download CV</a>
+    
+  </div>
+</section>
+
+<section id="about">
+  <h2><span>About Me</span></h2>
+  <p>
+    Hello! I'm <span class="gradient-text">Sam</span>, a cybersecurity analyst, IT consultant,Photographer,UX specialist and <span class="gradient-text">aspiring CISO</span> who loves creative design ART  and media.  
+    I merge security expertise with <span class="gradient-text">artistic UI/UX, photography and graphic design</span> to craft meaningful,authentic, real , secure, and visually stunning digital experiences.  
+    Outside of work, I explore futuristic trends, imitating arts features  and local and international  community projects that inspire innovation, boosting mindset and cretivity.
+  </p>
+</section>
+
+<section id="portfolio">
+  <h2><span>Portfolio</span></h2>
+  <p>Here is the art explored and innovated, best is yet to unfold.</p>
+  <div class="portfolio-grid">
+    <div class="portfolio-item">
+      <a href="https://www.canva.com/design/DAGP4GsyhW0/OE6aoFGDrnF2zZe2MGZc9w/edit?utm_content=DAGP4GsyhW0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"><img src="IMG_20240906_175640.jpg" alt="Runji-wrld portfolio"></a>
+      <h3>RUNJI wrld </h3>
+    </div>
+    <div class="portfolio-item">
+      <a href="https://www.canva.com/design/DAGeto4STXw/1F5oCPHF1w9cPUnjkbkk6g/edit"><img src="Task_c08bd068515cd93b.jpg" alt="Regalia luxe"></a>
+      <h3>LUXE</h3>
+    </div>
+    <div class="portfolio-item">
+      <a href="#"><img src="IMG-20230810-WA0058.jpg" alt="Project 3"></a>
+      <h3>COMING SOON</h3>
+      </div>
+      </div>
+
+              <h2>Tech Projects</h2>
+                 <p>Highlighting my innovative technology solutions and experiments creating a neofuturistic infrastructure.</p>
+                    <div class="portfolio-grid">
+                       <div class="portfolio-item">
+                           <a href="#"><img src="IMG-20241120-WA0019.jpg" alt="Tech Project 1"></a>
+                                <h3>Cybersecurity Dashboard</h3>
+                                    </div>
+                              <div class="portfolio-item">
+      <a href="#"><img src="IMG_20241120_180151.jpg" alt="Tech Project 2" /></a>
+      <h3>COMING SOON</h3>
+    </div>
+    <div class="portfolio-item">
+      <a href="#"><img src="images/tech3.jpg" alt="Tech Project 3"></a>
+      <h3>COMING SOON</h3>
+            
+    </div>
+  </div>
+</section>
+
+<section id ="ART">
+      <h1><span class="gradient-text">ART</span></h1>
+
+  <p>A collection of my artistic endeavors blending creativity.</p>
+    <div class="portfolio-item">
+      <a href="#"><video src="video_20241010_125622.mp4" autoplay loop muted playsinline style="width:100%; display:block;" class="gif-video"></video> 
+      <h3>art piece</h3>
+    </div>
+    <div class="portfolio-item">
+      <video src="lv_0_20241116225252.mp4" autoplay loop muted playsinline style="width:100%; display:block;" class="gif-video"></video>
+      <span><h3>Art combo</h3></span>
+    </div>
+    <div class="portfolio-item">
+      <a href="#"><img src="b4dcd67b-d912-47ea-a019-7ad53766b130.jpg" alt="Art Piece 3"></a>
+      <h3>Innovation centre</h3>
+      <ul class="portfolio-list">
+        <li class="portfolio-item">
+          <a href="#"><img src="-20241120-WA0019.jpg" alt="Art Piece 1"></a>
+          <h3>Art Piece</h3>
+          <div class="portfolio-item">
+            <video src="Monochrome Collage Ripped Paper Instagram Story.mp4" autoplay loop muted playsinline style="width:100%; display:block;" class="gif-video"></video>
+            <span><h3>Minimalistic design</h3></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2><span>Contact Me</span></h2>
+  <p>Have a project or collaboration? Send me a message below.</p>
+  <form action="#" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  &copy; all rights reserved @2025 Samuel Mwangi. Built with source and heart✨ — <a href="#hero">Back to Top</a>
+</footer>@LUXE
+
+</body>
+</html>
